@@ -117,7 +117,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.6);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -130,9 +130,27 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
         }
         .hidden {
             display: none;
+        }
+        .result-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            text-align: left;
+        }
+        .result-item.correct {
+            background-color: #c6f6d5;
+            border-left: 5px solid #38a169;
+        }
+        .result-item.incorrect {
+            background-color: #fed7d7;
+            border-left: 5px solid #e53e3e;
         }
     </style>
 </head>
@@ -141,22 +159,22 @@
 <div class="page-container">
     <div class="content">
         <h1 class="text-3xl font-bold text-center text-gray-800 mb-4">অধ্যায় ৭: সংযুক্ত কোণের ত্রিকোণমিতি (7.2)</h1>
-        <p class="text-center text-gray-600 mb-6"> তোমার নাম ও মোবাইল নম্বর লিখে প্রতিটি টপিকের কুইজে অংশ নাও। সবশেষে উত্তর জমা দাও।</p>
+        <p class="text-center text-gray-600 mb-6">আপনার নাম ও মোবাইল নম্বর লিখে প্রতিটি টপিকের কুইজে অংশ নিন। সবশেষে উত্তর জমা দিন।</p>
     </div>
 
     <form id="quizForm">
         <div class="px-8 mb-6">
             <div class="mb-4">
                 <label for="userName" class="block text-gray-700 text-sm font-bold mb-2">শিক্ষার্থীর নাম:</label>
-                <input type="text" id="userName" name="userName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="তোমার সম্পূর্ণ নাম লিখ" required>
+                <input type="text" id="userName" name="userName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="আপনার সম্পূর্ণ নাম লিখুন" required>
             </div>
             <div>
                 <label for="mobileNumber" class="block text-gray-700 text-sm font-bold mb-2">মোবাইল নম্বর:</label>
-                <input type="tel" id="mobileNumber" name="mobileNumber" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="তোমার মোবাইল নম্বর লিখ" required>
+                <input type="tel" id="mobileNumber" name="mobileNumber" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="আপনার মোবাইল নম্বর লিখুন" required>
             </div>
         </div>
 
-        <!-- Page 1 -->
+        <!-- Page 1: Topic 1 -->
         <div class="page">
             <div class="page-header">লোকনাথ ম্যাথ টিচিং হোম</div>
             <div class="content">
@@ -166,7 +184,7 @@
                     <li>$cos(A \pm B) = cos A \cdot cos B \mp sin A \cdot sin B$</li>
                     <li>$tan(A \pm B) = \frac{tan A \pm tan B}{1 \mp tan A \cdot tan B}$</li>
                 </ul>
-                <div class="quiz-question" data-correct="c">
+                <div class="quiz-question" data-question-id="q1_1" data-correct="c">
                     <p class="font-semibold">কুইজ ১.১: $cos(A - B)$ এর সঠিক সূত্র কোনটি?</p>
                     <div class="quiz-options">
                         <label><input type="radio" name="q1_1" value="a" required> ক) $cos A cos B - sin A sin B$</label>
@@ -174,23 +192,24 @@
                         <label><input type="radio" name="q1_1" value="c"> গ) $cos A cos B + sin A sin B$</label>
                         <label><input type="radio" name="q1_1" value="d"> ঘ) $sin A sin B - cos A cos B$</label>
                     </div>
+                    <div class="explanation hidden"><b>ব্যাখ্যা:</b> যৌগিক কোণের সূত্র অনুযায়ী, $cos(A - B) = cos A cos B + sin A sin B$ হয়।</div>
                 </div>
             </div>
-            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: 01748929957</div>
+            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: ০১৭৪৮৯২৯৯৫৭</div>
         </div>
 
-        <!-- Page 2 -->
+        <!-- Page 2: Topic 2 -->
         <div class="page">
             <div class="page-header">লোকনাথ ম্যাথ টিচিং হোম</div>
             <div class="content">
                 <h2 class="text-2xl font-semibold mb-3">টপিক ২: নির্দিষ্ট কোণের মান নির্ণয়</h2>
                 <div class="example-box">
-                    <b>উদাহরণ: $tan 15^{\circ}$ এর মান নির্ণয়:</b>
-                    <p>$tan 15^{\circ} = tan(45^{\circ} - 30^{\circ})$ <br>
-                    $= \frac{tan 45^{\circ} - tan 30^{\circ}}{1 + tan 45^{\circ} \cdot tan 30^{\circ}} = \frac{1 - \frac{1}{\sqrt{3}}}{1 + 1 \cdot \frac{1}{\sqrt{3}}} = \frac{\frac{\sqrt{3}-1}{\sqrt{3}}}{\frac{\sqrt{3}+1}{\sqrt{3}}}$ <br>
-                    $= \frac{\sqrt{3}-1}{\sqrt{3}+1} = \frac{(\sqrt{3}-1)(\sqrt{3}-1)}{(\sqrt{3}+1)(\sqrt{3}-1)} = \frac{3 - 2\sqrt{3} + 1}{3-1} = \frac{4-2\sqrt{3}}{2} = 2 - \sqrt{3}$</p>
+                    <b>উদাহরণ: $sin 105^{\circ}$ এর মান নির্ণয়:</b>
+                    <p>$sin 105^{\circ} = sin(60^{\circ} + 45^{\circ})$ <br>
+                    $= sin 60^{\circ} cos 45^{\circ} + cos 60^{\circ} sin 45^{\circ}$ <br>
+                    $= \frac{\sqrt{3}}{2} \times \frac{1}{\sqrt{2}} + \frac{1}{2} \times \frac{1}{\sqrt{2}} = \frac{\sqrt{3}+1}{2\sqrt{2}} = \frac{\sqrt{6}+\sqrt{2}}{4}$</p>
                 </div>
-                <div class="quiz-question" data-correct="c">
+                <div class="quiz-question" data-question-id="q2_1" data-correct="c">
                     <p class="font-semibold">কুইজ ২.১: $cot 15^{\circ}$ এর মান কোনটি?</p>
                     <div class="quiz-options">
                         <label><input type="radio" name="q2_1" value="a" required> ক) $2 - \sqrt{3}$</label>
@@ -198,12 +217,13 @@
                         <label><input type="radio" name="q2_1" value="c"> গ) $2 + \sqrt{3}$</label>
                         <label><input type="radio" name="q2_1" value="d"> ঘ) $1$</label>
                     </div>
+                    <div class="explanation hidden"><b>ব্যাখ্যা:</b> $tan 15^{\circ} = 2 - \sqrt{3}$। আমরা জানি, $cot 15^{\circ} = \frac{1}{tan 15^{\circ}} = \frac{1}{2 - \sqrt{3}} = 2 + \sqrt{3}$।</div>
                 </div>
             </div>
-            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: 01748929957</div>
+            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: ০১৭৪৮৯২৯৯৫৭</div>
         </div>
 
-        <!-- Page 3 -->
+        <!-- Page 3: Topic 3 -->
         <div class="page">
             <div class="page-header">লোকনাথ ম্যাথ টিচিং হোম</div>
             <div class="content">
@@ -215,7 +235,7 @@
                     $cos B = \frac{12}{13} \implies sin B = \sqrt{1 - cos^2 B} = \sqrt{1 - (\frac{12}{13})^2} = \frac{5}{13}$<br>
                     $cos(A+B) = cos A cos B - sin A sin B = \frac{4}{5} \times \frac{12}{13} - \frac{3}{5} \times \frac{5}{13} = \frac{48-15}{65} = \frac{33}{65}$
                 </div>
-                <div class="quiz-question" data-correct="b">
+                <div class="quiz-question" data-question-id="q3_1" data-correct="b">
                     <p class="font-semibold">কুইজ ৩.১: যদি $cot A = \frac{11}{2}$ এবং $tan B = \frac{7}{24}$ হয়, তবে $tan(A+B)$ এর মান কত?</p>
                     <div class="quiz-options">
                         <label><input type="radio" name="q3_1" value="a" required> ক) $\frac{125}{278}$</label>
@@ -223,12 +243,13 @@
                         <label><input type="radio" name="q3_1" value="c"> গ) $\frac{2}{3}$</label>
                         <label><input type="radio" name="q3_1" value="d"> ঘ) $\frac{118}{250}$</label>
                     </div>
+                    <div class="explanation hidden"><b>ব্যাখ্যা:</b> $tan A = \frac{1}{cot A} = \frac{2}{11}$। $tan(A+B) = \frac{tan A + tan B}{1 - tan A tan B} = \frac{\frac{2}{11} + \frac{7}{24}}{1 - \frac{2}{11} \cdot \frac{7}{24}} = \frac{\frac{48+77}{264}}{\frac{264-14}{264}} = \frac{125}{250} = \frac{1}{2}$।</div>
                 </div>
             </div>
-            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: 01748929957</div>
+            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: ০১৭৪৮৯২৯৯৫৭</div>
         </div>
 
-        <!-- Page 4 -->
+        <!-- Page 4: Topic 4 -->
         <div class="page">
             <div class="page-header">লোকনাথ ম্যাথ টিচিং হোম</div>
             <div class="content">
@@ -238,7 +259,7 @@
                     <b>সমাধান:</b> লব ও হরকে $cos 8^{\circ}$ দ্বারা ভাগ করে পাই,<br>
                     $\frac{1 + tan 8^{\circ}}{1 - tan 8^{\circ}} = \frac{tan 45^{\circ} + tan 8^{\circ}}{1 - tan 45^{\circ} \cdot tan 8^{\circ}} = tan(45^{\circ} + 8^{\circ}) = tan 53^{\circ}$
                 </div>
-                <div class="quiz-question" data-correct="a">
+                <div class="quiz-question" data-question-id="q4_1" data-correct="a">
                     <p class="font-semibold">কুইজ ৪.১: $cos 30^{\circ}32' cos 29^{\circ}28' - sin 149^{\circ}28' sin 29^{\circ}28'$ এর মান কত?</p>
                     <div class="quiz-options">
                         <label><input type="radio" name="q4_1" value="a" required> ক) $\frac{1}{2}$</label>
@@ -246,26 +267,28 @@
                         <label><input type="radio" name="q4_1" value="c"> গ) $0$</label>
                         <label><input type="radio" name="q4_1" value="d"> ঘ) $1$</label>
                     </div>
+                    <div class="explanation hidden"><b>ব্যাখ্যা:</b> রাশিটি হলো $cos(30^{\circ}32' + 29^{\circ}28') = cos 60^{\circ} = \frac{1}{2}$। কারণ $sin 149^{\circ}28' = sin(180^{\circ} - 30^{\circ}32') = sin 30^{\circ}32'$। কিন্তু সূত্রে বিয়োগ চিহ্ন থাকায় এটি $cos(A+B)$ এর সূত্র নয়, বরং $cos A cos B - sin A sin B$ এর মতো। এখানে একটি ভুল আছে, মূল নোটে $sin(180-A)=sinA$ ব্যবহার করে $cos(A+B)$ এর সূত্রে আনা হয়েছে। $sin 149^{\circ}28' = sin(180^{\circ}-30^{\circ}32') = sin 30^{\circ}32'$। তাই রাশিটি দাঁড়ায় $cos 30^{\circ}32' cos 29^{\circ}28' - sin 30^{\circ}32' sin 29^{\circ}28' = cos(30^{\circ}32' + 29^{\circ}28') = cos 60^{\circ} = \frac{1}{2}$।</div>
                 </div>
             </div>
-            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: 01748929957</div>
+            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: ০১৭৪৮৯২৯৯৫৭</div>
         </div>
 
-        <!-- Page 5 -->
+        <!-- Page 5: Topic 5 -->
         <div class="page">
             <div class="page-header">লোকনাথ ম্যাথ টিচিং হোম</div>
             <div class="content">
                 <h2 class="text-2xl font-semibold mb-3">টপিক ৫: $tan$ সম্পর্কিত অভেদ প্রমাণ</h2>
                 <div class="example-box">
-                    <b>উদাহরণ:</b> প্রমাণ কর যে, $tan 20^{\circ} + tan 25^{\circ} + tan 20^{\circ} tan 25^{\circ} = 1$ <br>
+                    <b>উদাহরণ:</b> প্রমাণ কর যে, $tan 65^{\circ} = tan 25^{\circ} + 2 tan 40^{\circ}$ <br>
                     <b>সমাধান:</b><br>
-                    আমরা জানি, $tan 45^{\circ} = 1$ <br>
-                    বা, $tan(20^{\circ} + 25^{\circ}) = 1$ <br>
-                    বা, $\frac{tan 20^{\circ} + tan 25^{\circ}}{1 - tan 20^{\circ} tan 25^{\circ}} = 1$ <br>
-                    বা, $tan 20^{\circ} + tan 25^{\circ} = 1 - tan 20^{\circ} tan 25^{\circ}$ <br>
-                    $\therefore tan 20^{\circ} + tan 25^{\circ} + tan 20^{\circ} tan 25^{\circ} = 1$ (প্রমাণিত)
+                    $tan 65^{\circ} = tan(25^{\circ} + 40^{\circ}) = \frac{tan 25^{\circ} + tan 40^{\circ}}{1 - tan 25^{\circ} tan 40^{\circ}}$<br>
+                    বা, $tan 65^{\circ}(1 - tan 25^{\circ} tan 40^{\circ}) = tan 25^{\circ} + tan 40^{\circ}$<br>
+                    বা, $tan 65^{\circ} - tan 65^{\circ} tan 25^{\circ} tan 40^{\circ} = tan 25^{\circ} + tan 40^{\circ}$<br>
+                    বা, $tan 65^{\circ} - cot 25^{\circ} tan 25^{\circ} tan 40^{\circ} = tan 25^{\circ} + tan 40^{\circ}$<br>
+                    বা, $tan 65^{\circ} - tan 40^{\circ} = tan 25^{\circ} + tan 40^{\circ}$<br>
+                    $\therefore tan 65^{\circ} = tan 25^{\circ} + 2 tan 40^{\circ}$ (প্রমাণিত)
                 </div>
-                <div class="quiz-question" data-correct="b">
+                <div class="quiz-question" data-question-id="q5_1" data-correct="b">
                     <p class="font-semibold">কুইজ ৫.১: যদি $A+B = 45^{\circ}$ হয়, তবে $(1+tan A)(1+tan B)$ এর মান কত?</p>
                     <div class="quiz-options">
                         <label><input type="radio" name="q5_1" value="a" required> ক) $1$</label>
@@ -273,29 +296,24 @@
                         <label><input type="radio" name="q5_1" value="c"> গ) $0$</label>
                         <label><input type="radio" name="q5_1" value="d"> ঘ) $-1$</label>
                     </div>
+                    <div class="explanation hidden"><b>ব্যাখ্যা:</b> $A+B=45^{\circ} \implies tan(A+B) = tan 45^{\circ} = 1$। $\frac{tan A + tan B}{1 - tan A tan B} = 1 \implies tan A + tan B = 1 - tan A tan B$। $\implies tan A + tan B + tan A tan B = 1$। এখন, $(1+tan A)(1+tan B) = 1 + tan A + tan B + tan A tan B = 1 + (tan A + tan B + tan A tan B) = 1+1=2$।</div>
                 </div>
             </div>
-            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: 01748929957</div>
+            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: ০১৭৪৮৯২৯৯৫৭</div>
         </div>
         
-        <!-- Page 6 -->
+        <!-- Page 6: Topic 6 -->
         <div class="page">
             <div class="page-header">লোকনাথ ম্যাথ টিচিং হোম</div>
             <div class="content">
                 <h2 class="text-2xl font-semibold mb-3">টপিক ৬: ত্রিভুজের কোণ সম্পর্কিত সমস্যা ($A+B+C = \pi$)</h2>
                 <div class="example-box">
-                    <b>উদাহরণ:</b> যদি $A+B+C=\pi$ এবং $cos A = cos B cos C$ হয়, তবে প্রমাণ কর যে, $cot B cot C = \frac{1}{2}$<br>
+                    <b>উদাহরণ:</b> যদি $A+B+C=\pi$ এবং $cos A = cos B cos C$ হয়, তবে প্রমাণ কর যে, $tan A = tan B + tan C$<br>
                     <b>সমাধান:</b><br>
-                    $cos A = cos B cos C$<br>
-                    বা, $cos(\pi - (B+C)) = cos B cos C$<br>
-                    বা, $-cos(B+C) = cos B cos C$<br>
-                    বা, $-(cos B cos C - sin B sin C) = cos B cos C$<br>
-                    বা, $-cos B cos C + sin B sin C = cos B cos C$<br>
-                    বা, $sin B sin C = 2 cos B cos C$<br>
-                    বা, $\frac{sin B sin C}{cos B cos C} = 2 \implies tan B tan C = 2$<br>
-                    $\therefore cot B cot C = \frac{1}{2}$ (প্রমাণিত)
+                    $tan B + tan C = \frac{sin B}{cos B} + \frac{sin C}{cos C} = \frac{sin B cos C + cos B sin C}{cos B cos C}$<br>
+                    $= \frac{sin(B+C)}{cos B cos C} = \frac{sin(\pi - A)}{cos A} = \frac{sin A}{cos A} = tan A$ (প্রমাণিত)
                 </div>
-                <div class="quiz-question" data-correct="c">
+                <div class="quiz-question" data-question-id="q6_1" data-correct="c">
                     <p class="font-semibold">কুইজ ৬.১: $\triangle ABC$-এ $tan A + tan B + tan C$ এর মান কোনটি?</p>
                     <div class="quiz-options">
                         <label><input type="radio" name="q6_1" value="a" required> ক) $1$</label>
@@ -303,24 +321,25 @@
                         <label><input type="radio" name="q6_1" value="c"> গ) $tan A tan B tan C$</label>
                         <label><input type="radio" name="q6_1" value="d"> ঘ) $cot A cot B cot C$</label>
                     </div>
+                    <div class="explanation hidden"><b>ব্যাখ্যা:</b> যেহেতু $A+B+C=\pi$, তাই $A+B = \pi - C$। $tan(A+B) = tan(\pi-C) = -tan C$। $\frac{tan A + tan B}{1 - tan A tan B} = -tan C \implies tan A + tan B = -tan C(1-tan A tan B) \implies tan A + tan B = -tan C + tan A tan B tan C$। অতএব, $tan A + tan B + tan C = tan A tan B tan C$।</div>
                 </div>
             </div>
-            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: 01748929957</div>
+            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: ০১৭৪৮৯২৯৯৫৭</div>
         </div>
 
-        <!-- Page 7 -->
+        <!-- Page 7: Topic 7 -->
         <div class="page">
             <div class="page-header">লোকনাথ ম্যাথ টিচিং হোম</div>
             <div class="content">
                 <h2 class="text-2xl font-semibold mb-3">টপিক ৭: শর্তমূলক অভেদ</h2>
                 <div class="example-box">
-                    <b>উদাহরণ:</b> যদি $tan \alpha - tan \beta = x$ এবং $cot \beta - cot \alpha = y$ হয়, প্রমাণ কর যে, $cot(\alpha - \beta) = \frac{1}{x} + \frac{1}{y}$<br>
+                    <b>উদাহরণ:</b> যদি $tan \theta = k \cdot tan \phi$ এবং $\theta + \phi = \alpha$ হয়, তবে প্রমাণ কর যে, $sin(\theta - \phi) = \frac{k-1}{k+1} sin \alpha$.<br>
                     <b>সমাধান:</b><br>
-                    $y = cot \beta - cot \alpha = \frac{1}{tan \beta} - \frac{1}{tan \alpha} = \frac{tan \alpha - tan \beta}{tan \alpha tan \beta} = \frac{x}{tan \alpha tan \beta}$<br>
-                    $\implies tan \alpha tan \beta = \frac{x}{y}$<br>
-                    এখন, $cot(\alpha - \beta) = \frac{1}{tan(\alpha - \beta)} = \frac{1 + tan \alpha tan \beta}{tan \alpha - tan \beta} = \frac{1 + \frac{x}{y}}{x} = \frac{\frac{y+x}{y}}{x} = \frac{x+y}{xy} = \frac{1}{y} + \frac{1}{x}$ (প্রমাণিত)
+                    $k = \frac{tan \theta}{tan \phi} = \frac{sin \theta cos \phi}{cos \theta sin \phi}$। যোজন-বিয়োজন করে, <br>
+                    $\frac{k-1}{k+1} = \frac{sin \theta cos \phi - cos \theta sin \phi}{sin \theta cos \phi + cos \theta sin \phi} = \frac{sin(\theta - \phi)}{sin(\theta + \phi)} = \frac{sin(\theta - \phi)}{sin \alpha}$<br>
+                    $\therefore sin(\theta - \phi) = \frac{k-1}{k+1} sin \alpha$ (প্রমাণিত)
                 </div>
-                <div class="quiz-question" data-correct="a">
+                <div class="quiz-question" data-question-id="q7_1" data-correct="a">
                     <p class="font-semibold">কুইজ ৭.১: যদি $cos\alpha cos\beta - sin\alpha sin\beta = 1$ হয়, তবে $1 + cot \alpha tan \beta$ এর মান কত?</p>
                     <div class="quiz-options">
                         <label><input type="radio" name="q7_1" value="a" required> ক) $0$</label>
@@ -328,72 +347,105 @@
                         <label><input type="radio" name="q7_1" value="c"> গ) $2$</label>
                         <label><input type="radio" name="q7_1" value="d"> ঘ) $-1$</label>
                     </div>
+                    <div class="explanation hidden"><b>ব্যাখ্যা:</b> $cos\alpha cos\beta - sin\alpha sin\beta = 1 \implies cos(\alpha+\beta) = 1 = cos 0^{\circ}$। অতএব, $\alpha + \beta = 0 \implies \alpha = -\beta$। এখন, $1 + cot \alpha tan \beta = 1 + cot(-\beta)tan\beta = 1 - cot\beta tan\beta = 1-1=0$।</div>
                 </div>
             </div>
-            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: 01748929957</div>
+            <div class="page-footer">লোকনাথ বণিক, প্রভাষক (উচ্চতর গণিত), মোবাইল নম্বর: ০১৭৪৮৯২৯৯৫৭</div>
         </div>
 
 
-        <button type="submit" id="submitButton" class="submit-btn">ফলাফল দেখ ও জমা দাও </button>
+        <button type="submit" id="submitButton" class="submit-btn">ফলাফল দেখুন ও জমা দিন</button>
     </form>
 </div>
 
-<!-- Modal for showing messages -->
-<div id="messageModal" class="modal hidden">
+<!-- Modal for showing results -->
+<div id="resultModal" class="modal hidden">
     <div class="modal-content">
-        <h3 class="text-2xl font-bold mb-4">তোমার ফলাফল</h3>
-        <p id="modalMessage" class="text-lg"></p>
-        <p id="submissionStatus" class="text-sm mt-2"></p>
-        <button id="closeModal" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">বন্ধ কর </button>
+        <h3 class="text-2xl font-bold mb-2">আপনার ফলাফল</h3>
+        <p id="finalScore" class="text-lg font-bold mb-4"></p>
+        <div id="resultDetails" class="space-y-4"></div>
+        <p id="submissionStatus" class="text-sm mt-4"></p>
+        <button id="closeModal" class="mt-6 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">বন্ধ করুন</button>
     </div>
 </div>
 
 <script>
     // --- Google Apps Script URL ---
-    // নিচের '' এর মধ্যে আপনার গুগল অ্যাপস স্ক্রিপ্ট এর URL টি পেস্ট করুন।
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2NrYBoM-yjrrEgfJ5H1Z7SVlO9rRoVUg7sK4Y7iW6wwRbp5VtNEsV4ZU0tbdeWRXG/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2NrYBoM-yjrrEgfJ5H1Z7SVlO9rRoVUg7sK4Y7iW6wwRbp5VtNEsV4ZU0tbdeWRXG/exec'; // আপনার গুগল অ্যাপস স্ক্রিপ্ট এর URL টি এখানে পেস্ট করুন
 
     const form = document.getElementById('quizForm');
     const submitButton = document.getElementById('submitButton');
-    const modal = document.getElementById('messageModal');
-    const modalMessage = document.getElementById('modalMessage');
+    const modal = document.getElementById('resultModal');
+    const finalScoreEl = document.getElementById('finalScore');
+    const resultDetailsEl = document.getElementById('resultDetails');
     const submissionStatus = document.getElementById('submissionStatus');
     const closeModal = document.getElementById('closeModal');
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // --- Calculate Score ---
         let score = 0;
         const questions = document.querySelectorAll('.quiz-question');
         const totalQuestions = questions.length;
+        let resultHTML = '';
 
-        questions.forEach(question => {
+        questions.forEach((question, index) => {
+            const questionId = question.getAttribute('data-question-id');
+            const questionText = question.querySelector('p').innerText;
             const correctAnswer = question.getAttribute('data-correct');
-            const selectedAnswer = question.querySelector('input[type="radio"]:checked');
-            if (selectedAnswer && selectedAnswer.value === correctAnswer) {
-                score++;
+            const explanation = question.querySelector('.explanation').innerHTML;
+            const selectedAnswerInput = question.querySelector(`input[name="${questionId}"]:checked`);
+            
+            let resultItem = '';
+            if (selectedAnswerInput) {
+                const userAnswer = selectedAnswerInput.value;
+                const userAnswerText = selectedAnswerInput.parentElement.innerText;
+
+                if (userAnswer === correctAnswer) {
+                    score++;
+                    resultItem = `
+                        <div class="result-item correct">
+                            <p class="font-bold">${index + 1}. ${questionText}</p>
+                            <p>আপনার উত্তর: ${userAnswerText} (সঠিক)</p>
+                        </div>`;
+                } else {
+                    resultItem = `
+                        <div class="result-item incorrect">
+                            <p class="font-bold">${index + 1}. ${questionText}</p>
+                            <p>আপনার উত্তর: ${userAnswerText} (ভুল)</p>
+                            <div class="mt-2 p-2 bg-gray-100 rounded">${explanation}</div>
+                        </div>`;
+                }
+            } else {
+                 resultItem = `
+                    <div class="result-item incorrect">
+                        <p class="font-bold">${index + 1}. ${questionText}</p>
+                        <p>আপনি এই প্রশ্নের উত্তর দেননি।</p>
+                        <div class="mt-2 p-2 bg-gray-100 rounded">${explanation}</div>
+                    </div>`;
             }
+            resultHTML += resultItem;
         });
 
-        // --- Display Score ---
-        modalMessage.innerHTML = `তুমি মোট <b>${totalQuestions}</b> টি প্রশ্নের মধ্যে <b>${score}</b> নম্বর পেয়েছ।`;
+        finalScoreEl.innerHTML = `আপনি মোট <b>${totalQuestions}</b> টির মধ্যে <b>${score}</b> নম্বর পেয়েছেন।`;
+        resultDetailsEl.innerHTML = resultHTML;
+        MathJax.typesetPromise([resultDetailsEl]);
         showModal();
         
-        // --- Prepare and Send Data to Google Sheet ---
+        // --- Send Data to Google Sheet ---
         if (SCRIPT_URL.trim() === '') {
             submissionStatus.textContent = 'গুগল শীটে উত্তর জমা দেওয়া হয়নি (URL সেট করা নেই)।';
             return;
         }
 
         submitButton.disabled = true;
-        submissionStatus.textContent = 'তোমার উত্তর গুগল শীটে জমা হচ্ছে...';
+        submissionStatus.textContent = 'আপনার উত্তর গুগল শীটে জমা হচ্ছে...';
 
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
         data.timestamp = new Date().toLocaleString('bn-BD', { timeZone: 'Asia/Dhaka' });
-        data.score = score; // Add score to the data
-        data.totalQuestions = totalQuestions; // Add total questions
+        data.score = score;
+        data.totalQuestions = totalQuestions;
 
         fetch(SCRIPT_URL, {
             method: 'POST',
@@ -404,11 +456,10 @@
             redirect: 'follow'
         })
         .then(res => {
-            submissionStatus.textContent = 'তোমার উত্তর সফলভাবে জমা হয়েছে।';
-            form.reset();
+            submissionStatus.textContent = 'আপনার উত্তর সফলভাবে জমা হয়েছে।';
         })
         .catch(err => {
-            submissionStatus.textContent = 'একটি সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা কর।';
+            submissionStatus.textContent = 'একটি সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।';
             console.error(err);
         })
         .finally(() => {
@@ -422,6 +473,7 @@
 
     closeModal.addEventListener('click', function() {
         modal.classList.add('hidden');
+        form.reset();
     });
 </script>
 
